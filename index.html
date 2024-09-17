@@ -3,236 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PICSEL-KDKCE Computer Science And Engineering Department</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-<style>
-body {margin:0;font-family:Arial}
-
-.topnav {
-  overflow: hidden;
-  background-color: white;
+    <title>College Forum</title>
+    <style>
+      /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.topnav a {
-  float: right;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  margin-right: 30px;
-  margin-top: 30px;
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #c5c1c1;
 }
-.topnav button{
-  background-color: rgb(0, 26, 255);
-  color: white;
-  padding: 8px;
-  border-radius: 6px;
-  margin-top: -8px;
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
 }
-.topnav img{
-    width: 150px;
-    margin-top: -20px;
-    height: 150px;
+
+h1, h3 {
+    margin-bottom: 15px;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gainsboro;
+    /* padding: 15px 20px; */
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.logo img {
     margin-left: 100px;
-}
-.topnav .icon {
-  display: none;
+   
 }
 
-.dropdown {
-  float: right;
-  overflow: hidden;
-  margin-top: 30px;
-  margin-right: 30px;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
-.dropdown .dropbtn {
-  font-size: 17px;    
-  border: none;
-  outline: none;
-  color: black;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
+.nav-links li a {
+    color: black;
+    padding: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+.nav-links li a:hover {
+    background-color: black;
+    color: white;
+    
 }
 
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 10px;
-  border-radius: 10px;
-  text-decoration: none;
-  display: block;
-  text-align: center;
+/* Dropdown Styles */
+.user-dropdown {
+    position: relative;
 }
 
-.topnav a:hover, .dropdown:hover .dropbtn {
-  color: rgb(4, 4, 255);
+.user-dropdown .dropbtn {
+    background-color: gainsboro;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 17px;
+    margin-top: -7px;
+    transition: background-color 0.3s ease;
 }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
-  color: black;
+.user-dropdown .dropbtn:hover {
+    background-color: rgb(77, 77, 77);
+    color: white;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child), .dropdown .dropbtn {
+.user-dropdown .dropdown-content {
     display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
     position: absolute;
     right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .topnav.responsive .dropdown {float: none;}
-  .topnav.responsive .dropdown-content {position: relative;}
-  .topnav.responsive .dropdown .dropbtn {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
 }
-#Nav-links:hover{
+
+.user-dropdown .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.user-dropdown .dropdown-content a:hover {
     background-color: black;
     color: white;
-    border-radius: 5px;
-    box-shadow: 4px 6px 8px darkslategrey;
+    align-items: right;
 }
-.horizontal{
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: auto;
-    color: black;
-    height: 2px;
+
+.user-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+    margin-right: 20px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
     background-color: black;
 }
 
-#btn-login{
-    background-color: white; color:black; border-radius: 2px; height: 40px; width: 80px;
-    border: 1px white solid;
-    border-radius: 5px;
-    margin-left: -10px;
-    margin-right:-20px;
-    margin-top: -13px;
-    font-size: 16px;
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 20px;
+        background-color: gainsboro;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
 }
-#btn-login:hover{
-    background: black;
-    color: white;
-    border: none;
-    box-shadow: 4px 6px 8px darkslategrey;
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
 }
-.drop1{
-    margin-left: 30px;
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    max-width: auto;
     margin-bottom: 20px;
 }
-.footer-text{
-    margin-left: 60px;
-    color: grey;
-    
-}
-.all-links{
-    margin-left: 1410px;
-    margin-top: -33px;
 
+.footer-col h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
 }
-.container{
-    height: 700px;
+
+.footer-col p,
+.footer-col ul {
+    font-size: 14px;
+    color: #bbb;
+    letter-spacing: 1px;
 }
-.footer-container{
-    height: 200px;
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
 }
- 
-</style>
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #bbb;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #fff;
+}
+
+.footer-col .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-col .social-icons a img {
+    width: 30px;
+    transition: transform 0.3s ease;
+}
+
+.footer-col .social-icons a img:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #bbb;
+}
+
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="topnav" id="myTopnav">
-    <img class="logo-img" src="media/logo_picsel.png" alt="picsel logo">
-    <a href="signup.html"><button id="btn-login" type="submit" >SignUp</button></a>
-    <a href="login.html"><button id="btn-login" type="submit" >Login</button></a>
-    <a id="Nav-links" href="contact.html">Contact</a>
-    <a id="Nav-links" href="About.html">About</a>
-    <a id="Nav-links" href="gallery.html">Gallery</a>
-    <div class="dropdown">
-        <button id="Nav-links" class="dropbtn">Events 
-        <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a id="Nav-links" class="drop1" style="margin-bottom:-10px;" href="comingevent.html">UpComing Events</a>
-            <a id="Nav-links" class="drop1" href="successful event.html">Successful Events</a>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="media/main_logo_Picsel.png" height="130px" width="150px" alt="">
         </div>
-    </div> 
-  <a id="Nav-links" href="home.html" class="active">Home</a>
-  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-  
-</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li>
+              <div class="user-dropdown">
+                <button class="dropbtn">Events</button>
+                <div class="dropdown-content">
+                    <a href="comingevent.html">Upcoming Events</a>
+                    <a href="successful event.html">Successful Events</a>
+                </div>
+            </li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>About Us</h3>
+                <p>Welcome to the <b style="font-weight: bolder;font-size: large;">PICSEL- ' Panel In Computer Science & Engineering Learners '</b>. This platform connects students, faculty, and alumni, promoting collaboration, knowledge sharing, and community engagement. Our mission is to support academic and professional growth through discussions, events. Join us to engage with peers, enhance your skills, and stay connected with the CSE community!
 
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#topics">About US</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#community">Gallery</a></li>
+                    <li><a href="#resources">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" alt="Facebook"></a>
+                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/picsel.kdk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2024-25 PICSEL-KDKCE All Rights Reserved.</p>
+        </div>
+    </footer>
 
-<script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
-<br>
-<hr class="horizontal">
-<hr class="horizontal"><br>
+    <script>
+        // Hamburger menu toggle for mobile view
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 
-<div class="container">
-
-</div>
-
-
-<footer class="footer">
- <div class="footer-container">
-    <div class="footer-line">
-        <hr style="margin-left: 40px; margin-right: 40px; height: 3px; background-color: black; color: black;">
-    </div>
-    <div class="footer-text">
-        <p>Copyright © 2024 PICSEL-KDKCE</p>
-    </div>
-    <div class="all-links">
-        <a href="https://www.instagram.com/picsel.kdk/?utm_source=ig_web_button_share_sheet"><img src="img/insta-logo.png" height="25px" style="margin-right: 7px;" alt=""></a>
-        <a href="#"><img src="img/facebook-logo.png" height="25px" href="" alt=""></a>
-    </div>
-    </div>
-</footer>
 </body>
 </html>

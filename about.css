@@ -1,7 +1,9 @@
 *{
     padding: 0%;
     margin: 0%;
+    background-color: beige;
 }
+
 .flip-container{
     -webkit-perspective:1000 ;
     background: transparent;
