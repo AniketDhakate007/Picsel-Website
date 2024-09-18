@@ -105,6 +105,62 @@ a:hover {
     align-items: center;
     flex-wrap: wrap;
 }
+/* Mobile Navigation Buttons */
+.mobile-nav {
+    display: none;  /* Initially hidden, will only show on mobile */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    z-index: 100;
+}
+.nav-btn {
+    background-color: #0044cc; /* Attractive blue color */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 40px;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.nav-btn:hover {
+    background-color: #f89c1c; /* Change to orange on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    transform: translateY(-5px); /* Lift the button slightly */
+}
+/* Make Buttons Responsive for Mobile View */
+@media (max-width: 768px) {
+    .mobile-nav {
+        display: flex;  /* Display only on mobile screens */
+    }
+}
+
+/* Optional: Add some button animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 68, 204, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 68, 204, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 68, 204, 0.4);
+    }
+}
+
+.nav-btn:hover {
+    animation: pulse 1.5s infinite; /* Subtle pulsing animation on hover */
+}
 
 .logo h1 {
     color: white;
@@ -178,16 +234,113 @@ a:hover {
 
 /* Hamburger Menu for Mobile */
 .hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
     cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1001;
+
 }
 
 .hamburger span {
-    width: 25px;
+    display: block;
+    width: 100%;
     height: 3px;
     background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Transform to 'X' when active */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Mobile Fullscreen Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 68, 204, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.5s ease;
+    z-index: 1000;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-menu ul li {
+    margin: 20px 0;
+}
+
+.mobile-menu ul li a {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu ul li a:hover {
+    color: #f89c1c; /* Highlight on hover */
+}
+
+/* Active Menu */
+.mobile-menu.active {
+    right: 0;
+}
+
+/* Optional: Add an overlay effect */
+body.menu-open {
+    overflow: hidden; /* Prevent scrolling when the menu is open */
+}
+
+/* Keyframe animation for menu links */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-menu ul li a {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .logo img {
+        width: 80px;
+    }
+
+    .hamburger {
+        width: 25px;
+        height: 20px;
+    }
+
+    .mobile-menu ul li a {
+        font-size: 20px;
+    }
 }
 
 /* Responsive Navbar */
@@ -222,7 +375,116 @@ a:hover {
         margin-bottom: 20px;
     }
 }
+/* Hamburger Menu for Mobile */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1001;
 
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Transform to 'X' when active */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Mobile Fullscreen Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 68, 204, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.5s ease;
+    z-index: 1000;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-menu ul li {
+    margin: 20px 0;
+}
+
+.mobile-menu ul li a {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu ul li a:hover {
+    color: #f89c1c; /* Highlight on hover */
+}
+
+/* Active Menu */
+.mobile-menu.active {
+    right: 0;
+}
+
+/* Optional: Add an overlay effect */
+body.menu-open {
+    overflow: hidden; /* Prevent scrolling when the menu is open */
+}
+
+/* Keyframe animation for menu links */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-menu ul li a {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .logo img {
+        width: 80px;
+    }
+
+    .hamburger {
+        width: 25px;
+        height: 20px;
+    }
+
+    .mobile-menu ul li a {
+        font-size: 20px;
+    }
+}
 /* Dropdown Styles */
 .user-dropdown {
     position: relative;
@@ -510,8 +772,6 @@ footer {
                 <li><a href="#resources">Resources</a></li>
             </ul>
 
-            <!-- Search and User Dropdown -->
-
             <!-- Hamburger Menu for Mobile -->
             <div class="hamburger">
                 <span><a href="home.html">Home</span>
@@ -520,6 +780,17 @@ footer {
             </div>
         </div>
     </nav>
+
+       <!-- Mobile Menu -->
+       <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#join">Join Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</div>
 
     <div class="background-video-container">
         <video autoplay muted loop id="bg-video">
@@ -631,6 +902,18 @@ footer {
         } else {
             content.classList.remove('translucent');  // Keep it transparent at the top
         }
+    });
+     // Get the hamburger menu and mobile menu
+     const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const body = document.body;
+
+    // Add click event listener to the hamburger button
+    hamburger.addEventListener('click', function() {
+        // Toggle the active class on hamburger and menu
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        body.classList.toggle('menu-open'); // Disable scrolling when menu is open
     });
 
         const track = document.querySelector('.carousel-track');
