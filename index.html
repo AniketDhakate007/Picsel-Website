@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Forum</title>
-    <style>
-      /* General Styles */
+    <title>PICSEL- Panel In Computer Science & Engineering Learners</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+<style>
+    /* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +18,12 @@
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    background-color: #c5c1c1;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2, h3 {
+    margin-bottom: 15px;
 }
 
 a {
@@ -24,45 +32,158 @@ a {
     transition: all 0.3s ease;
 }
 
-h1, h3 {
-    margin-bottom: 15px;
+a:hover {
+    color: #f89c1c;
 }
 
 /* Navbar Styles */
 .navbar {
+    background-color: black;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: gainsboro;
-    /* padding: 15px 20px; */
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 100;
 }
 
-.logo img {
-    margin-left: 100px;
-   
+.logo h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 .nav-links li a {
-    color: black;
-    padding: 18px;
-    border-radius: 5px;
+    color: white;
+    padding: 10px 15px;
     font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
 }
 
-.nav-links li a:hover {
-    background-color: black;
+.nav-links li a:hover::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #f89c1c;
+    transition: width 0.3s ease;
+}
+/* Background Video */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* User Dropdown */
+.user-dropdown {
+    position: relative;
+}
+
+.user-dropdown .dropbtn {
+    background: none;
     color: white;
-    
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.user-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+}
+
+.user-dropdown .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    display: block;
+    text-align: left;
+}
+
+.user-dropdown .dropdown-content a:hover {
+    background-color: #f89c1c;
+    color: white;
+}
+
+.user-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        background-color: #353935;
+        width: 100%;
+        height: calc(100vh - 60px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease-in-out;
+        padding-top: 20px;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-icons {
+        display: none;
+    }
+
+    .nav-links li {
+        margin-bottom: 20px;
+    }
 }
 
 /* Dropdown Styles */
@@ -118,77 +239,158 @@ h1, h3 {
     display: block;
 }
 
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
-    margin-right: 20px;
-}
 
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-}
-
-@media screen and (max-width: 768px) {
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        padding: 20px;
-        background-color: gainsboro;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        display: none;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-}
-
-/* Footer Styles */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 40px 20px;
+/* Hero Section */
+.hero {
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
     text-align: center;
+}
+
+.hero h1 {
+    font-size: 36px;
+    color: black;
+}
+
+.hero p {
+    font-size: 16px;
+    margin-top: 20px;
+    max-width: 600px;
+    color: black;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 30px;
+    background-color: #f89c1c;
+    color: white;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: #f76b1a;
+}
+
+/* Committee Members Section */
+.committee {
+    /* padding: 60px 20px; */
+    background-color: #fff;
+    text-align: center;
+}
+
+.committee h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.card {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    
+    /* text-align: center; */
+    min-width: 200px;
+    margin: 0 10px;
+    margin-top: 0px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card video {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+}
+
+.card h3 {
+    /* margin-top: 15px; */
+    color: black;
+    font-size: 18px;
+}
+
+.card p {
+    color: #777;
+    font-size: 14px;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+    background-color: rgba(0, 68, 204, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+/* Footer */
+footer {
+    background-color: black;
+    color: white;
+    padding: 40px 20px;
 }
 
 .footer-container {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .footer-col {
-    max-width: auto;
+    width: 100%;
+    max-width: 30%;
     margin-bottom: 20px;
 }
 
 .footer-col h3 {
-    font-size: 18px;
     margin-bottom: 15px;
-}
-
-.footer-col p,
-.footer-col ul {
-    font-size: 14px;
-    color: #bbb;
-    letter-spacing: 1px;
 }
 
 .footer-col ul {
     list-style: none;
-    padding: 0;
 }
 
 .footer-col ul li {
@@ -196,91 +398,144 @@ footer {
 }
 
 .footer-col ul li a {
-    color: #bbb;
-    transition: color 0.3s ease;
+    color: white;
 }
 
-.footer-col ul li a:hover {
-    color: #fff;
-}
-
-.footer-col .social-icons {
+.social-icons {
     display: flex;
-    justify-content: center;
     gap: 10px;
 }
 
-.footer-col .social-icons a img {
-    width: 30px;
-    transition: transform 0.3s ease;
-}
-
-.footer-col .social-icons a img:hover {
-    transform: scale(1.1);
-}
-
 .footer-bottom {
-    margin-top: 30px;
-    border-top: 1px solid #444;
-    padding-top: 20px;
-}
-
-.footer-bottom p {
+    text-align: center;
+    padding: 10px 0;
     font-size: 14px;
-    color: #bbb;
+    background-color: darkgray;
 }
 
-    </style>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+/* Small Devices */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .card {
+        min-width: 150px;
+    }
+
+    .footer-col {
+        max-width: 100%;
+    }
+}
+
+</style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ADVANCED NAVBAR -->
     <nav class="navbar">
-        <div class="logo">
-            <img src="media/main_logo_Picsel.png" height="130px" width="150px" alt="">
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="About.html">About Us</a></li>
-            <li>
-              <div class="user-dropdown">
-                <button class="dropbtn">Events</button>
-                <div class="dropdown-content">
-                    <a href="comingevent.html">Upcoming Events</a>
-                    <a href="successful event.html">Successful Events</a>
-                </div>
-            </li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-        
-        </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="logo">
+                <h1>PICSel</h1>
+            </div>
+           
+
+
+            <!-- Nav Links -->
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li>
+                    <div class="user-dropdown">
+                      <button class="dropbtn">Events</button>
+                      <div class="dropdown-content">
+                          <a href="comingevent.html">Upcoming Events</a>
+                          <a href="successful event.html">Successful Events</a>
+                      </div>
+                  </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+
+            <!-- Search and User Dropdown -->
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+     <!-- Background Video -->
+     <div class="background-video">
+        <video autoplay muted loop plays-inline id="bg-video">
+            <source src="media/bgvideo.mp4" type="video/mp4" style="width: 100%; position: absolute; right: 0; bottom: 0; z-index: -1;">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to PICSel Forum</h1>
+            <p>Your place for collaboration, knowledge sharing, and growth in Computer Science & Engineering.</p>
+            <a href="#about" class="hero-btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- COMMITTEE MEMBERS SECTION -->
+    <section class="committee">
+        <h2>Meet Our Committee Members</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel">
+                <div class="carousel-track">
+                    <div class="card">
+                        <video autoplay loop muted plays-inline src="media/harsharan.mp4"></video>
+                        <h3>Harsharan</h3>
+                        <p>President</p>
+                    </div>
+                    <div class="card">
+                        <video autoplay loop muted plays-inline src="media/agraja.mp4"></video>
+                        <h3>Agraja</h3>
+                        <p>Vice President</p>
+                    </div>
+                    <div class="card">
+                        <video autoplay loop muted plays-inline src="media/website_head.mp4"></video>
+                        <h3>David Lee</h3>
+                        <p>Secretary</p>
+                    </div>
+                    <div class="card">
+                        <img src="member4.jpg" alt="Member 4">
+                        <h3>Susan Park</h3>
+                        <p>Treasurer</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
-                <h3>About Us</h3>
-                <p>Welcome to the <b style="font-weight: bolder;font-size: large;">PICSEL- ' Panel In Computer Science & Engineering Learners '</b>. This platform connects students, faculty, and alumni, promoting collaboration, knowledge sharing, and community engagement. Our mission is to support academic and professional growth through discussions, events. Join us to engage with peers, enhance your skills, and stay connected with the CSE community!
-
-                </p>
+                <h3>About PICSel</h3>
+                <p>PICSel is a student-led forum designed to connect Computer Science and Engineering students with opportunities for learning, collaboration, and career growth.</p>
             </div>
             <div class="footer-col">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#topics">About US</a></li>
+                    <li><a href="#topics">Topics</a></li>
                     <li><a href="#events">Events</a></li>
-                    <li><a href="#community">Gallery</a></li>
-                    <li><a href="#resources">Contact Us</a></li>
+                    <li><a href="#community">Community</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -293,18 +548,48 @@ footer {
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Copyright &copy; 2024-25 PICSEL-KDKCE All Rights Reserved.</p>
+            <p>&copy; 2024 PICSel Forum. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- JavaScript for Carousel Control -->
     <script>
-        // Hamburger menu toggle for mobile view
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        const track = document.querySelector('.carousel-track');
+        const cards = Array.from(track.children);
+        const nextButton = document.querySelector('.next');
+        const prevButton = document.querySelector('.prev');
+
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        
+        const moveToSlide = (index) => {
+            track.style.transform = `translateX(-${index * cardWidth}px)`;
+        };
+
+        let currentIndex = 0;
+
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < cards.length - 1) {
+                currentIndex++;
+                moveToSlide(currentIndex);
+            }
         });
+
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                moveToSlide(currentIndex);
+            }
+        });
+
+        // Adjust track width for responsiveness
+        window.addEventListener('resize', () => {
+            moveToSlide(currentIndex);
+        });
+
+        // Initial setup
+        moveToSlide(currentIndex);
     </script>
+
 
 </body>
 </html>
