@@ -37,26 +37,60 @@ a:hover {
 }
 
 /* Background Video */
-.background-video {
-    position: absolute;
+/* Background Video */
+.background-video-container {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: -1; /* Send it behind the content */
     overflow: hidden;
-    z-index: -1;
 }
 
 #bg-video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the video covers the entire container */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.content {
+    position: relative;
+    z-index: 1;
+    transition: background-color 0.5s ease; /* Smooth transition for opacity */
+}
+.logo img {
+    width: 120px;  /* Default size */
+    height: auto;
+    transition: all 0.3s ease-in-out;  /* Smooth hover transition */
+}
+
+.logo img:hover {
+    transform: scale(1.2);  /* Slightly enlarge the logo on hover */
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));  /* Add a shadow effect */
+    opacity: 0.9;  /* Slightly reduce opacity to create an effect */
+}
+
+/* Responsive Logo Size */
+@media (max-width: 768px) {
+    .logo img {
+        width: 90px;  /* Adjust size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        width: 70px;  /* Further reduce size for very small screens */
+    }
 }
 
 
 /* Navbar Styles */
 .navbar {
-    background-color: black;
+    background-color: grey  ;
     padding: 15px 20px;
     position: fixed;
     width: 100%;
@@ -69,6 +103,7 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .logo h1 {
@@ -134,7 +169,7 @@ a:hover {
 
 .user-dropdown .dropdown-content a:hover {
     background-color: #f89c1c;
-    color: white;
+    color: bwhite;
 }
 
 .user-dropdown:hover .dropdown-content {
@@ -244,25 +279,19 @@ a:hover {
 
 /* Hero Section */
 .hero {
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    height: 70vh;
+    height: 100vh; /* Fullscreen hero section */
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0); /* Fully transparent at the start */
+    color: white;
+    padding: 20px;
 }
 
-.hero h1 {
-    font-size: 36px;
-    color: black;
-}
 
-.hero p {
-    font-size: 16px;
-    margin-top: 20px;
-    max-width: 600px;
-    color: black;
+.hero h1, .hero p {
+    transition: color 0.5s ease; /* Smooth color transition */
 }
 
 .hero-btn {
@@ -282,9 +311,24 @@ a:hover {
 
 /* Committee Members Section */
 .committee {
-    /* padding: 60px 20px; */
-    background-color: #fff;
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly more opaque */
+    color: black;
     text-align: center;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero-btn {
+        padding: 8px 20px;
+    }
 }
 
 .committee h2 {
@@ -443,7 +487,9 @@ footer {
         <div class="navbar-container">
             <!-- Logo -->
             <div class="logo">
-                <h1>PICSel</h1>
+                <a href="#">
+                    <img src="media/main_logo_Picsel.png" alt="PICSel Logo" id="logo-img">
+                </a>
             </div>
            
 
@@ -468,30 +514,29 @@ footer {
 
             <!-- Hamburger Menu for Mobile -->
             <div class="hamburger">
-                <span></span>
+                <span><a href="home.html">Home</span>
                 <span></span>
                 <span></span>
             </div>
         </div>
     </nav>
 
-     <!-- Background Video -->
-     <div class="background-video">
-        <video autoplay muted loop plays-inline id="bg-video">
-            <source src="media/bgvideo.mp4" type="video/mp4" style="width: 100%; position: absolute; right: 0; bottom: 0; z-index: -1;">
+    <div class="background-video-container">
+        <video autoplay muted loop id="bg-video">
+            <source src="media/bgvideo.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
+    
+    <!-- Content -->
+    <div class="content">
+        <section class="hero">
             <h1>Welcome to PICSel Forum</h1>
-            <p>Your place for collaboration, knowledge sharing, and growth in Computer Science & Engineering.</p>
-            <a href="#about" class="hero-btn">Learn More</a>
-        </div>
-    </section>
-
-    <!-- COMMITTEE MEMBERS SECTION -->
+            <p>Join the future of computer science and engineering.</p>
+            <a href="#join" class="hero-btn">Join Us</a>
+        </section>
+    
+       <!-- COMMITTEE MEMBERS SECTION -->
     <section class="committee">
         <h2>Meet Our Committee Members</h2>
         <div class="carousel-container">
@@ -523,6 +568,27 @@ footer {
             <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
+        <!-- Other sections -->
+    </div>
+    
+    
+    <!-- Background Video
+     <div class="background-video">
+        <video autoplay muted loop plays-inline id="bg-video">
+            <source src="media/bgvideo.mp4" type="video/mp4" style="width: 100%; position: absolute; right: 0; bottom: 0; z-index: -1;">
+            Your browser does not support the video tag.
+        </video>
+    </div> -->
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to PICSel Forum</h1>
+            <p>Your place for collaboration, knowledge sharing, and growth in Computer Science & Engineering.</p>
+            <a href="#about" class="hero-btn">Learn More</a>
+        </div>
+    </section>
+
+    
 
     <!-- FOOTER -->
     <footer>
@@ -556,6 +622,17 @@ footer {
 
     <!-- JavaScript for Carousel Control -->
     <script>
+         window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var content = document.getElementById('content');
+
+        if (scrollPosition > 100) {  // Adjust this value for when you want the effect to start
+            content.classList.add('translucent');  // Add translucent class
+        } else {
+            content.classList.remove('translucent');  // Keep it transparent at the top
+        }
+    });
+
         const track = document.querySelector('.carousel-track');
         const cards = Array.from(track.children);
         const nextButton = document.querySelector('.next');
