@@ -27,12 +27,86 @@ body, html {
     text-align: center;
     color: white;
 }
-.tab-list li{
+/* .tab-list li{
     margin: auto;
     overflow: auto;
     scrollbar-width: auto;
     float: right;
+} */
+ /* section added by gaurav */
+.committee
+{
+    width: 100%;
+    text-align: center;
 }
+ 
+.scroll-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px;
+  scroll-behavior: smooth;
+}
+
+.card {
+  width: 250px;
+  height: 300px;
+  perspective: 1000px;
+  flex-shrink: 0;
+  
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+ 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card video {
+  width: 100%;
+  height: 100%;
+  border-radius: 2%;
+  z-index: -1;/* Send it behind the content */
+  margin-bottom: 15px;
+  object-fit: cover; /* Ensures the video covers the entire container */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+
+/* section added by gaurav */
  .hero-section video{
     position: fixed;
     top: 0;
@@ -172,11 +246,11 @@ footer {
     </section>
 
     <!-- Content Section (Example) -->
-    <div class="container-fluid">
+    <div class="committee">     <!-- changed container fluid to container -->
         <h1 class="heading">
             Members
         </h1>
-        <ul class="tab__list" role="tablist">
+        <!-- <ul class="tab__list" role="tablist">
             <li class="tab__item tab__item--active" role="presentation">      
                 <button class="tab__item-title" role="tab" data-tab-title="galaxy z fold6" an-tr="co07_key feature tab-home-text-mobile_galaxy z fold6" an-ca="home content click" an-ac="product marketing" an-la="product marketing:im:kv1:mobile:galaxy z fold6:tab" aria-selected="true" data-di-id="di-id-13f00ae9-134d8ebf">Galaxy Z Fold6<span class="tab__item-line"></span>
                 </button>
@@ -212,9 +286,39 @@ footer {
                 <button class="tab__item-title" role="tab" data-tab-title="galaxy buds3" an-tr="co07_key feature tab-home-text-mobile_galaxy buds3" an-ca="home content click" an-ac="product marketing" an-la="product marketing:im:kv5:mobile:galaxy buds3:tab" aria-selected="false" data-di-id="di-id-93f8cf00-abae0b0a">Galaxy Buds3<span class="tab__item-line"></span>
                 </button>
             </li>
-        </ul>
-    </div>
-
+        </ul> -->
+        <!-- section added by gaurav -->
+        <div class="scroll-container">
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-front">
+                    <p class="lead" style="color: black; margin-top: -220px; margin-left: -130px; font-weight: bold; font-style: italic; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">President </p>
+                  <video autoplay loop muted plays-inline src="media/harsharan.mp4"></video>
+                </div>
+                <div class="card-back">
+                  <h2>Member 1</h2>
+                  <p>Role: President</p>
+                  <p>Contact: email1@example.com</p>
+                </div>
+              </div>
+            </div>
+            <!-- Repeat cards for other members -->
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <h2>Member 2</h2>
+                  <img src="member2.jpg" alt="Member 2" />
+                </div>
+                <div class="card-back">
+                  <h2>Member 2</h2>
+                  <p>Role: Vice President</p>
+                  <p>Contact: email2@example.com</p>
+                </div>
+              </div>
+            </div>
+            <!-- Add more cards as needed -->
+          </div>
+    <!-- section added by gaurav -->
     <!-- Footer -->
     <div class="container-fluid">
         <footer>
