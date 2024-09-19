@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICSEL- Panel In Computer Science & Engineering Learners</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Navbar Container -->
+<div class="navbar-container">
+    <!-- Logo -->
+    <div class="logo">
+        <a href="#"><img src="media/main_logo_Picsel.png" alt="Logo"></a>
+    </div>
+    
+    <!-- Hamburger Button (for mobile view) -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#join">Join Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Fullscreen Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+    <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#join">Join Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+
+<script src="script.js"></script>
+    <div class="background-video-container">
+        <video autoplay muted loop id="bg-video">
+            <source src="media/bgvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <!-- Content -->
+    <div class="content">
+        <section class="hero">
+            <h1>Welcome to PICSel Forum</h1>
+            <p>Join the future of computer science and engineering.</p>
+            <a href="#join" class="hero-btn">Join Us</a>
+        </section>
+    
+       <!-- COMMITTEE MEMBERS SECTION -->
+    <section class="committee">
+        <h2>Meet Our Committee Members</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel">
+                <div class="carousel-track">
+                    <div class="card">
+                        <video autoplay loop muted plays-inline src="media/harsharan.mp4"></video>
+                        <h3>Harsharan</h3>
+                        <p>President</p>
+                    </div>
+                    <div class="card">
+                        <video autoplay loop muted plays-inline src="media/agraja.mp4"></video>
+                        <h3>Agraja</h3>
+                        <p>Vice President</p>
+                    </div>
+                    <div class="card">
+                        <video autoplay loop muted plays-inline src="media/website_head.mp4"></video>
+                        <h3>David Lee</h3>
+                        <p>Secretary</p>
+                    </div>
+                    <div class="card">
+                        <img src="member4.jpg" alt="Member 4">
+                        <h3>Susan Park</h3>
+                        <p>Treasurer</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+        <!-- Other sections -->
+    </div>
+    
+    
+    <!-- Background Video
+     <div class="background-video">
+        <video autoplay muted loop plays-inline id="bg-video">
+            <source src="media/bgvideo.mp4" type="video/mp4" style="width: 100%; position: absolute; right: 0; bottom: 0; z-index: -1;">
+            Your browser does not support the video tag.
+        </video>
+    </div> -->
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to PICSel Forum</h1>
+            <p>Your place for collaboration, knowledge sharing, and growth in Computer Science & Engineering.</p>
+            <a href="#about" class="hero-btn">Learn More</a>
+        </div>
+    </section>
+
+    
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>About PICSel</h3>
+                <p>PICSel is a student-led forum designed to connect Computer Science and Engineering students with opportunities for learning, collaboration, and career growth.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#topics">Topics</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#community">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" alt="Facebook"></a>
+                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/picsel.kdk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PICSel Forum. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Carousel Control -->
+    <script>
+         window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var content = document.getElementById('content');
+
+        if (scrollPosition > 100) {  // Adjust this value for when you want the effect to start
+            content.classList.add('translucent');  // Add translucent class
+        } else {
+            content.classList.remove('translucent');  // Keep it transparent at the top
+        }
+    });
+     // Get the hamburger menu and mobile menu
+     const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const body = document.body;
+
+    // Add click event listener to the hamburger button
+    hamburger.addEventListener('click', function() {
+        // Toggle the active class on hamburger and menu
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        body.classList.toggle('menu-open'); // Disable scrolling when menu is open
+    });
+
+        const track = document.querySelector('.carousel-track');
+        const cards = Array.from(track.children);
+        const nextButton = document.querySelector('.next');
+        const prevButton = document.querySelector('.prev');
+
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        
+        const moveToSlide = (index) => {
+            track.style.transform = `translateX(-${index * cardWidth}px)`;
+        };
+
+        let currentIndex = 0;
+
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < cards.length - 1) {
+                currentIndex++;
+                moveToSlide(currentIndex);
+            }
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                moveToSlide(currentIndex);
+            }
+        });
+
+        // Adjust track width for responsiveness
+        window.addEventListener('resize', () => {
+            moveToSlide(currentIndex);
+        });
+
+        // Initial setup
+        moveToSlide(currentIndex);
+    </script>
+
+
+</body>
+</html>
