@@ -3,199 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Navbar with Brand Image and Dropdown</title>
+    <title>Premium Navbar - White & Light Gray</title>
+    
     <!-- Bootstrap CSS 3.4.1 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Google Fonts for Premium Look -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> -->
+    
+    <!-- Custom Styles for White and Light Gray Premium Look -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8; /* Light background */
+        }
+        /* Navbar background */
+        .navbar {
+            background-color: #ffffff; /* Pure white background */
+            border: none;
+            border-radius: 0;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+        }
+        /* Brand logo */
+        .navbar-brand img {
+            max-height: 100px;
+            margin-top: -35px;
+        }
+        /* Navbar links */
+        .navbar-nav > li > a {
+            color: #333 !important; /* Dark gray text for contrast */
+            padding: 15px 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        .navbar-nav > li > a:hover {
+            color: #000 !important; /* Slightly darker hover color */
+            background-color: #f2f2f2 !important; /* Subtle hover effect */
+        }
+        /* Dropdown menu styling */
+        .dropdown-menu {
+            background-color: #f9f9f9; /* Light gray background */
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Slight shadow */
+            transition: all 0.3s ease;
+        }
+        .dropdown-menu > li > a {
+            color: #333 !important;
+            padding: 10px 20px;
+        }
+        .dropdown-menu > li > a:hover {
+            background-color: #eaeaea; /* Subtle hover effect */
+            color: #000 !important;
+        }
+        /* Login button */
+        .navbar-right .btn-login {
+            color: #fff;
+            background-color: #5c5c5c; /* Medium gray button */
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .navbar-right .btn-login:hover {
+            background-color: #333; /* Darker hover effect */
+        }
+        /* Make the navbar sticky on scroll */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        /* Subtle fade-in effect for dropdown */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .navbar-nav li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+    
     <!-- jQuery 3.7.1 -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- Bootstrap JavaScript 3.4.1 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-        }
-      /* Navbar Styling */
-      .navbar{
-        padding: 20px;
-      }
-      .navbar li{
-        margin-left: 40px;
-        font-size: 18px;
-        letter-spacing: 1px;
-      }
-      .navbar li:hover{
-        background-color: lightblue;
-        border-radius: 8px;
-      }
-      .dropdown-menu {
-        background-color: gainsboro;
-        border-radius: 8px;
-      }
-      .dropdown-menu li{
-        padding: 10px;
-        margin-left: 10px;
-      }
-      /* Navbar Styling Ends */
-       /* Full-page video background */
-       .video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
 
-        /* Full-page video background */
-        .video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        /* Card container */
-        .card-container {
-            margin-top: 550px;
-            z-index: 1;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        .heading{
-            text-align: center;
-            color: gainsboro;
-        }
-
-        /* Member card styling */
-        .member-card {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            /* padding: 20px; */
-            text-align: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            margin-right: 20px;
-            width: 200px; /* Fixed width for cards */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .member-card:hover {
-            transform: translateY(-10px); /* Move the card up by 10px */
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Add more shadow on hover */
-        }
-
-        .member-card video {
-            border-radius: 8px;
-            width: 100%; /* Responsive video */
-            height: auto;
-        }
-        .member-card h3 {
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-
-        .member-card p {
-            color: #666;
-        }
-         /* Hide scrollbar but still enable scrolling */
-         .card-container {
-            margin-top: 20vh;
-            z-index: 1;
-            overflow-x: auto;
-            white-space: nowrap;
-            -ms-overflow-style: none;  /* Internet Explorer 10+ */
-            scrollbar-width: none;     /* Firefox */
-        }
-
-        /* Hide scrollbar for Chrome, Safari, and Edge */
-        .card-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Flip container */
-        .flip-card {
-            display: inline-block;
-            background-color: transparent;
-            perspective: 1000px; /* Perspective for 3D effect */
-            width: 250px;
-            height: 400px;
-            margin-right: 20px;
-        }
-        /* Inner card with flipping */
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-
-        /* Flip the card on hover */
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        /* Front and back sides */
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .flip-card-front {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-
-        .flip-card-back {
-            background-color: rgba(0, 123, 255, 0.9);
-            color: white;
-            transform: rotateY(180deg);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Image and video styling for front side */
-        .flip-card-front img {
-            border-radius: 8px;
-            width: 100%;
-            height: 82%; /* Fixed height for the image */
-            object-fit: cover;
-        }
-
-        /* Text for front and back */
-        .flip-card-front h3, .flip-card-back h3 {
-            margin-top: 15px;
-            margin-bottom: 5px;
-            color: white;
-        }
-        .flip-card-front p{
-            color: white;
-        }
-
-        .flip-card-back p {
-            color: white;
-            text-align: center;
-        }
-
-    </style>
-    </style>
+    <!-- Custom jQuery for Additional Effects -->
+    <script>
+        $(document).ready(function() {
+            // Smooth dropdown hover
+            $('.dropdown').hover(function() {
+                $(this).find('.dropdown-menu').stop(true, true).fadeIn(300);
+            }, function() {
+                $(this).find('.dropdown-menu').stop(true, true).fadeOut(300);
+            });
+            
+            // Smooth scroll for buttons or links
+            $('a').on('click', function(e) {
+                if (this.hash !== "") {
+                    e.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function() {
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 
-<!-- Responsive Navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<!-- Premium Responsive Navbar -->
+<nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -207,15 +131,16 @@
             </button>
             <a class="navbar-brand" href="#">
                 <!-- Brand Image -->
-                <img src="media/main_logo_Picsel.png" alt="Brand" style="width:120px; margin-top:-50px">
+                <img src="media/main_logo_Picsel.png" alt="Brand">
             </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse">
+            <!-- Right-aligned navigation items -->
             <ul class="nav navbar-nav navbar-right">
-                <li class=""><a href="home.php">Home</a></li>
-                <li><a href="About.php">About</a></li>
+                <li class=""><a href="home.html">Home</a></li>
+                <li><a href="about3.html">About</a></li>
                 
                 <!-- Dropdown for Services -->
                 <li class="dropdown">
@@ -223,198 +148,17 @@
                         Events <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Upcoming Events</a></li>
-                        <li><a href="#">Successful Events</a></li>
+                        <li><a href="annual events.html">Annual Events</a></li>
+                        <li><a href="comingevent.html">Upcoming Events</a></li>
+                        <li><a href="successful event.html">Successful Events</a></li>
                     </ul>
                 </li>
 
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-
-<div class="container-fluid">
-    <!-- Background video -->
-    <video class="video-bg" autoplay muted loop>
-        <source src="media/Untitled ‑ Made with FlexClip.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-
-    <!-- Container for core member cards -->
-    <div class="container card-container">
-        <h2 class="heading">Our Core Members</h2>
-        <br><br>
-        <div class="member-card">
-            <video autoplay muted loop>
-                <source src="media/harsharan.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-            <h3>Member 1</h3>
-            <p>Role: Developer</p>
-            <a href="members data/harsharan.php"><button class="btn btn-primary btn-sm">Read More</button></a>
-        </div>
-        <div class="member-card">
-            <video autoplay muted loop>
-                <source src="media/agraja.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-            <h3>Member 2</h3>
-            <p>Role: Designer</p>
-            <a href="members data/harsharan.php"><button class="btn btn-primary btn-sm">Read More</button></a>
-        </div>
-        <div class="member-card">
-            <video autoplay muted loop>
-                <source src="media/website_head.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-            <h3>Member 3</h3>
-            <p>Role: Manager</p>
-            <a href="members data/harsharan.php"><button class="btn btn-primary btn-sm">Read More</button></a>
-        </div>
-        <div class="member-card">
-            <video autoplay muted loop>
-                <source src="media/harsharan.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-            <h3>Member 4</h3>
-            <p>Role: Developer</p>
-            <a href="members data/harsharan.php"><button class="btn btn-primary btn-sm">Read More</button></a>
-        </div>
-        <div class="member-card">
-            <video autoplay muted loop>
-                <source src="media/harsharan.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-            <h3>Member 5</h3>
-            <p>Role: Developer</p>
-            <a href="members data/harsharan.php"><button class="btn btn-primary btn-sm">Read More</button></a>
-        </div>
-        <div class="member-card">
-            <video autoplay muted loop>
-                <source src="media/harsharan.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-            <h3>Member 6</h3>
-            <p>Role: Developer</p>
-            <a href="members data/harsharan.php"><button class="btn btn-primary btn-sm">Read More</button></a>
-        </div>
-    </div>  <!-- Core members cars container ends-->
-
-    <!-- Members Card  3rd Year Start-->
-     <!-- Container for member cards -->
-    <div class="container card-container" style="margin-top:10px">
-        <!-- Flip Card 1 -->
-        <h2 class="heading">Members</h2>
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- Front side (image + video) -->
-                <div class="flip-card-front">
-                    <img src="media/Picture1.png" alt="Member 1 Image">
-                    <h3>Member 1</h3>
-                    <p>Role: Developer</p>
-                </div>
-                <!-- Back side (info) -->
-                <div class="flip-card-back">
-                    <h3>Member 1</h3>
-                    <p>Experienced in Full-Stack Development.<br>Expert in JavaScript, React, Node.js.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Flip Card 2 -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- Front side (image + video) -->
-                <div class="flip-card-front">
-                    <img src="media/Picture2.png" alt="Member 2 Image">
-                    <h3>Member 2</h3>
-                    <p>Role: Designer</p>
-                </div>
-                <!-- Back side (info) -->
-                <div class="flip-card-back">
-                    <h3>Member 2</h3>
-                    <p>Creative Designer with expertise in UX/UI Design and Branding.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Flip Card 3 -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- Front side (image + video) -->
-                <div class="flip-card-front">
-                    <img src="media/Picture5.png" alt="Member 3 Image">
-                    <h3>Member 3</h3>
-                    <p>Role: Manager</p>
-                </div>
-                <!-- Back side (info) -->
-                <div class="flip-card-back">
-                    <h3>Member 3</h3>
-                    <p>Project Manager with 10+ years of experience in tech leadership.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Flip Card 4 -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- Front side (image + video) -->
-                <div class="flip-card-front">
-                    <img src="media/Picture5.png" alt="Member 3 Image">
-                    <h3>Member 4</h3>
-                    <p>Role: Manager</p>
-                </div>
-                <!-- Back side (info) -->
-                <div class="flip-card-back">
-                    <h3>Member 4</h3>
-                    <p>Project Manager with 10+ years of experience in tech leadership.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Flip Card 5 -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- Front side (image + video) -->
-                <div class="flip-card-front">
-                    <img src="media/Picture5.png" alt="Member 3 Image">
-                    <h3>Member 5</h3>
-                    <p>Role: Manager</p>
-                </div>
-                <!-- Back side (info) -->
-                <div class="flip-card-back">
-                    <h3>Member 5</h3>
-                    <p>Project Manager with 10+ years of experience in tech leadership.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Flip Card 6 -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- Front side (image + video) -->
-                <div class="flip-card-front">
-                    <img src="media/Picture5.png" alt="Member 3 Image">
-                    <h3>Member 6</h3>
-                    <p>Role: Manager</p>
-                </div>
-                <!-- Back side (info) -->
-                <div class="flip-card-back">
-                    <h3>Member 6</h3>
-                    <p>Project Manager with 10+ years of experience in tech leadership.</p>
-                </div>
-            </div>
-        </div>
-        <!-- Add more flip cards as needed -->
-    </div>
-    <!-- Members Card 3rd Year Ends -->
-
-
-
-
-    
-</div>  <!-- container-fluid -->
 
 </body>
 </html>

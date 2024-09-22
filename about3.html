@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum - Premium Community</title>
+    
+    <!-- Bootstrap CSS 3.4.1 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery 3.7.1 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- JavaScript 3.4.1 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+        h1, h2, h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 36px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards 0.5s;
+        }
+        h2 {
+            font-size: 28px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        h3 {
+            font-size: 22px;
+        }
+        .section {
+            padding: 40px 30px;
+            background-color: white;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards;
+        }
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+        .key-feature-icon {
+            font-size: 40px;
+            color: #007bff;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+        .contact-info li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        #back-to-top:hover {
+            background-color: #0056b3;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Forum Purpose -->
+        <div class="section" id="forum-purpose">
+            <h1>Welcome to Our Premium Community Forum</h1>
+            <p>Our forum is dedicated to fostering high-quality discussions, sharing advanced knowledge, and building a strong community of professionals. Whether you are here to seek advice or share your expertise, you are in the right place!</p>
+            <img src="https://via.placeholder.com/1000x400" alt="Forum Banner" class="img-fluid">
+        </div>
+
+        <!-- Key Features -->
+        <div class="section" id="key-features">
+            <h2>Key Features</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div>
+                        <i class="glyphicon glyphicon-education key-feature-icon"></i>
+                        <strong>Expert-Led Webinars</strong>
+                        <p>Join weekly expert sessions on trending topics to stay ahead of the curve.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div>
+                        <i class="glyphicon glyphicon-book key-feature-icon"></i>
+                        <strong>Comprehensive Resources</strong>
+                        <p>Access a rich library of articles, tutorials, and research papers.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div>
+                        <i class="glyphicon glyphicon-comment key-feature-icon"></i>
+                        <strong>Interactive Discussions</strong>
+                        <p>Engage in insightful discussions with peers and mentors from various fields.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div>
+                        <i class="glyphicon glyphicon-king key-feature-icon"></i>
+                        <strong>Achievements & Rewards</strong>
+                        <p>Earn badges and recognition for your valuable contributions to the community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guidelines for Participation -->
+        <div class="section" id="guidelines">
+            <h2>Guidelines for Participation</h2>
+            <p>To ensure a positive environment, please follow these guidelines:</p>
+            <ul>
+                <li>Be respectful and courteous to all members.</li>
+                <li>Avoid using offensive or inappropriate language.</li>
+                <li>Stay on-topic and contribute meaningfully to discussions.</li>
+                <li>Report any issues or misconduct to the moderators.</li>
+            </ul>
+        </div>
+
+        <!-- Information about the Community -->
+        <div class="section" id="community-info">
+            <h2>About Our Community</h2>
+            <p>Our forum brings together professionals, hobbyists, and learners from diverse fields. We focus on knowledge-sharing, networking, and personal development. Expect regular events, expert sessions, and opportunities to grow your skills and connections.</p>
+            <img src="https://via.placeholder.com/1000x400" alt="Community Image" class="img-fluid">
+        </div>
+
+        <!-- Forum Management -->
+        <div class="section" id="management">
+            <h2>Who Manages the Forum</h2>
+            <p>Our team of experienced moderators ensures the smooth functioning of the forum, providing assistance whenever necessary. They ensure that the community remains a safe and welcoming space for everyone.</p>
+            <img src="https://via.placeholder.com/1000x400" alt="Management Team" class="img-fluid">
+        </div>
+
+        <!-- Contact Details -->
+        <div class="section" id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+            <ul class="contact-info">
+                <li><strong>Email:</strong> <a href="mailto:support@forumcommunity.com">support@forumcommunity.com</a></li>
+                <li><strong>Phone:</strong> +1-234-567-8901</li>
+                <li><strong>Office Hours:</strong> Monday - Friday, 9 AM - 5 PM</li>
+            </ul>
+        </div>
+
+        <!-- Highlight Notable Members or Achievements -->
+        <div class="section" id="notable-members">
+            <h2>Notable Members & Achievements</h2>
+            <div class="highlight">
+                <h3>Member of the Month: Jane Doe</h3>
+                <p>Jane has been a standout member for her exceptional contributions to the community, especially in the fields of AI and machine learning.</p>
+            </div>
+            <div class="highlight">
+                <h3>Achievement Highlight: 10,000 Posts Milestone</h3>
+                <p>We recently hit 10,000 posts! Thanks to all members for making this forum a rich source of knowledge.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top">&#8679;</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Forum Community. All Rights Reserved.</p>
+        <p>Follow us on <a href="#">Twitter</a> | <a href="#">Facebook</a> |  <a href="#">Instagram</a></p>
+    </footer>
+
+    <script>
+        // Smooth Scrolling
+        $('a[href*="#"]:not([href="#"])').on('click', function(event) {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+
+        // Back to Top Button
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+
+        $('#back-to-top').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 800);
+            return false;
+        });
+    </script>
+</body>
+</html>

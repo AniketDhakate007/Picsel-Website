@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Events</title>
+    <!-- Bootstrap 3.4.1 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Google Fonts for a premium typography feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            padding-top: 50px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        /* Event logo */
+        .event-logo {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .event-logo img {
+            max-width: 150px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .event-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Event title */
+        .event-title {
+            text-align: center;
+            font-size: 3rem;
+            margin: 20px 0;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* Event details (date, time, location) */
+        .event-details {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        /* Event description */
+        .event-description {
+            margin: 40px 0;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #555;
+        }
+
+        /* Event Schedule */
+        .event-schedule {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .event-schedule h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .list-group-item {
+            font-size: 1.1rem;
+            background-color: #fdfdfd;
+            color: #34495e;
+            border: none;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .list-group-item:hover {
+            background-color: #f4f6f8;
+        }
+
+        /* Featured Speakers */
+        .featured-speakers {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .featured-speakers h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .speakers .col-md-4 {
+            margin-bottom: 30px;
+        }
+
+        .speakers img {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .speakers img:hover {
+            transform: scale(1.05);
+        }
+
+        .speakers h4 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .speakers p {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+
+        /* Photos & Videos */
+        .photos-videos {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .photos-videos h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .media-grid {
+            margin-top: 30px;
+        }
+
+        .media-grid img, .media-grid video {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .media-grid img:hover, .media-grid video:hover {
+            transform: scale(1.05);
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .event-title {
+                font-size: 2.2rem;
+            }
+
+            .event-details {
+                font-size: 1rem;
+            }
+
+            .event-schedule h2,
+            .featured-speakers h2,
+            .photos-videos h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Event Title and Logo -->
+        <div class="event-logo">
+            <img src="event-logo.png" alt="Event Logo">
+        </div>
+        <h1 class="event-title">Annual Tech Conference 2024</h1>
+
+        <!-- Event Date, Time, Location -->
+        <div class="event-details">
+            <p><strong>Date:</strong> January 20, 2024</p>
+            <p><strong>Time:</strong> 9:00 AM - 5:00 PM</p>
+            <p><strong>Location:</strong> Tech Arena, Silicon Valley, CA</p>
+        </div>
+
+        <!-- Event Description -->
+        <div class="event-description">
+            <p>Join us for the Annual Tech Conference 2024, where leading tech enthusiasts and experts gather to share
+                insights on the latest trends, innovations, and opportunities in the technology industry. From keynote
+                presentations to hands-on workshops, this event offers a rich experience for everyone passionate about
+                technology and innovation.</p>
+        </div>
+
+        <!-- Event Schedule -->
+        <div class="event-schedule">
+            <h2>Event Schedule</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>9:00 AM:</strong> Opening Remarks</li>
+                <li class="list-group-item"><strong>10:00 AM:</strong> Keynote Speaker: Dr. Jane Doe</li>
+                <li class="list-group-item"><strong>12:00 PM:</strong> Lunch Break</li>
+                <li class="list-group-item"><strong>2:00 PM:</strong> Workshop: AI in Modern Tech</li>
+                <li class="list-group-item"><strong>4:00 PM:</strong> Closing Discussion</li>
+            </ul>
+        </div>
+
+        <!-- Featured Speakers -->
+        <div class="featured-speakers">
+            <h2>Featured Speakers</h2>
+            <div class="row speakers">
+                <div class="col-md-4">
+                    <img src="speaker1.jpg" alt="Speaker 1">
+                    <h4>Dr. Jane Doe</h4>
+                    <p>AI Researcher and Innovator</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="speaker2.jpg" alt="Speaker 2">
+                    <h4>John Smith</h4>
+                    <p>Founder of XYZ Startup</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="speaker3.jpg" alt="Speaker 3">
+                    <h4>Emily Johnson</h4>
+                    <p>Blockchain Expert</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photos and Videos -->
+        <div class="photos-videos">
+            <h2>Photos & Videos</h2>
+            <div class="row media-grid">
+                <div class="col-md-6">
+                    <img src="event-photo1.jpg" alt="Event Photo 1">
+                </div>
+                <div class="col-md-6">
+                    <video controls>
+                        <source src="event-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery 3.7.1 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap 3.4.1 JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        $(document).ready(function () {
+            // Custom JavaScript for interactions (optional)
+        });
+    </script>
+
+</body>
+
+</html>
