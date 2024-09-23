@@ -3,81 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read More</title>
-    <!-- Latest compiled and minified CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-    *{
-        padding: 0%;
-        margin: 0%;
-    }
-    .col-sm-8{
-        margin-top: 100px;
-    }
-    .col-sm-4 img:hover{
-        transform: translateY(-5px);
-        box-shadow: none;
-        opacity: 0.9;
-    }
-    .card-block{
-    height: auto;
-    width: auto;
-    background-color: lightblue;
-    border: none;
-    background-position: center;
-    background-size: cover;
-    transition: all .2s ease-in-out !important;
-    border-radius: 20px;
-    &:hover{
-        transform: translateY(-5px);
-        box-shadow: none;
-        opacity: 0.9;
-    }
-}
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: auto;
-    margin: auto;
-    text-align: center;
-    font-family: arial;
-    margin-inline: 20px;
-  }
-  
-  .title {
-    color: grey;
-    font-size: 18px;
-  }
-  
-  a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
-  }
-</style>
+    <title>Designation Page</title>
+    <!-- Bootstrap 3.4.1 -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Fullscreen Hero Section for President */
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%; /* Slightly larger for parallax effect */
+            background: url('media/Upcoming_events.jpg') no-repeat center center/cover;
+            transform: translateY(0);
+            transition: transform 0.1s ease-out;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay for readability */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideDown 1s forwards 0.5s;
+        }
+
+        .hero-content h3 {
+            font-size: 1.75em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s forwards 1s;
+        }
+
+        @keyframes slideDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+
+        .scroll-arrow:hover {
+            animation: none;
+            transform: translate(-50%, -5px);
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translate(-50%, 0);
+            }
+            50% {
+                transform: translate(-50%, -10px);
+            }
+        }
+
+        /* Member Section */
+        .member-section {
+            padding: 80px 0;
+            background-color: #f4f4f9;
+            text-align: center;
+        }
+
+        .member-section h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card h3 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #777;
+        }
+
+        /* Scroll Triggered Animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Advanced Scroll Animations */
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+        }
+
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .reveal-rotate {
+            opacity: 0;
+            transform: rotate(10deg);
+            transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+        }
+
+        .reveal-rotate.visible {
+            opacity: 1;
+            transform: rotate(0);
+        }
+
+        .reveal-slide-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+        .reveal-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-slide-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+        .reveal-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Parallax Background Movement */
+        @media (min-width: 768px) {
+            .hero-background {
+                transition: transform 0.1s ease-out;
+            }
+        }
+    </style>
 </head>
 <body>
-   <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="card card-block card-1">
-                  <h1>Harsharan Arjani</h1>
-                  <p class="title">President</p>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta enim dolor sunt impedit error? Praesentium iusto, molestias consequuntur totam debitis quidem quisquam quae omnis quis quia similique, laborum sit rem.
-                  Accusamus possimus libero et ab dolorem vel saepe commodi corporis qui quasi dignissimos aut error excepturi assumenda, quis recusandae repellendus cum? Nisi odio nesciunt aperiam at ipsam quas earum totam.</p>
-                  <div style="margin: 24px 0;">
-                    <a href="#"><i class="fa fa-instagram"></i></a> 
-                    <a href="#"><i class="fa fa-twitter"></i></a>  
-                    <a href="#"><i class="fa fa-linkedin"></i></a>  
-                  </div>
+
+    <!-- President Hero Section with Full-Screen Background -->
+    <div class="hero-section">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>John Doe</h2>
+            <h3>President</h3>
+        </div>
+        <div class="scroll-arrow">&#x25BC;</div>
+    </div>
+
+    <!-- Members Section -->
+    <div class="container designation-container member-section">
+        <h2>Our Team Members</h2>
+        
+        <div class="row text-center">
+            <!-- Member 1: Slide Left -->
+            <div class="col-sm-4 reveal-slide-left">
+                <div class="card">
+                    <img src="https://via.placeholder.com/120" alt="Member 1 Image">
+                    <h3>Jane Smith</h3>
+                    <p>Member</p>
                 </div>
-              </div>
-            <div class="col-sm-4">
-                <img src="../media/Picture1.png" alt="" width="90%" style="margin-top: 100px; border-radius: 12px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+            </div>
+
+            <!-- Member 2: Scale -->
+            <div class="col-sm-4 reveal-scale">
+                <div class="card">
+                    <img src="https://via.placeholder.com/120" alt="Member 2 Image">
+                    <h3>Michael Brown</h3>
+                    <p>Member</p>
+                </div>
+            </div>
+
+            <!-- Member 3: Slide Right -->
+            <div class="col-sm-4 reveal-slide-right">
+                <div class="card">
+                    <img src="https://via.placeholder.com/120" alt="Member 3 Image">
+                    <h3>Lisa White</h3>
+                    <p>Member</p>
+                </div>
             </div>
         </div>
-   </div>
+    </div>
+
+    <!-- Bootstrap JS, jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for Scroll Triggered Animation and Parallax -->
+    <script>
+        $(document).ready(function() {
+            // Smooth Scroll for Arrow
+            $('.scroll-arrow').on('click', function() {
+                $('html, body').animate({
+                    scrollTop: $('.member-section').offset().top
+                }, 800);
+            });
+
+            // Parallax Effect for Hero Background
+            $(window).on('scroll', function() {
+                var scrollTop = $(this).scrollTop();
+                $('.hero-background').css('transform', 'translateY(' + scrollTop * 0.5 + 'px)');
+            });
+
+            // Reveal on Scroll Effect
+            function revealOnScroll() {
+                var scrollTop = $(window).scrollTop();
+                var windowHeight = $(window).height();
+                
+                // Check for elements with each animation class
+                $('.reveal-on-scroll, .reveal-scale, .reveal-rotate, .reveal-slide-left, .reveal-slide-right').each(function() {
+                    var elementTop = $(this).offset().top;
+                    if (scrollTop + windowHeight > elementTop + 100) {
+                        $(this).addClass('visible');
+                    }
+                });
+            }
+
+            // Call the function on load and scroll
+            $(window).on('scroll', revealOnScroll);
+            revealOnScroll(); // Initial call
+        });
+    </script>
 </body>
 </html>
