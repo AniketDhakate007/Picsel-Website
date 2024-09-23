@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designation Page</title>
+    <title>Premium Designation Page</title>
     <!-- Bootstrap 3.4.1 -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
         body {
@@ -14,80 +16,76 @@
             color: #333;
             overflow-x: hidden;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
         }
 
-        /* Fullscreen Hero Section for President */
+        /* Hero Section */
         .hero-section {
             height: 100vh;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            background-image: url('../media/Upcoming_events.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
         }
 
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .hero-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .president-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             width: 100%;
-            height: 120%; /* Slightly larger for parallax effect */
-            background: url('../media/Upcoming_events.jpg') no-repeat center center/cover;
-            transform: translateY(0);
-            transition: transform 0.1s ease-out;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .hero-overlay {
+        .president {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .hero-text {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .hero-text.visible,
+        .hero-image.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Dark overlay for readability */
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            text-align: center;
-            color: #fff;
-            z-index: 2;
-        }
-
-        .hero-content h2 {
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 1.5px;
-            opacity: 0;
-            transform: translateY(-50px);
-            animation: slideDown 1s forwards 0.5s;
-        }
-
-        .hero-content h3 {
-            font-size: 1.75em;
-            margin-bottom: 20px;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.9);
-            opacity: 0;
-            transform: translateY(50px);
-            animation: slideUp 1s forwards 1s;
-        }
-
-        @keyframes slideDown {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
         }
 
         .scroll-arrow {
@@ -99,12 +97,6 @@
             color: #fff;
             cursor: pointer;
             animation: bounce 2s infinite;
-            z-index: 2;
-        }
-
-        .scroll-arrow:hover {
-            animation: none;
-            transform: translate(-50%, -5px);
         }
 
         @keyframes bounce {
@@ -114,54 +106,6 @@
             50% {
                 transform: translate(-50%, -10px);
             }
-        }
-
-        /* Member Section */
-        .member-section {
-            padding: 80px 0;
-            background-color: #f4f4f9;
-            text-align: center;
-        }
-
-        .member-section h2 {
-            font-size: 2.5em;
-            font-weight: 700;
-            margin-bottom: 50px;
-        }
-
-        .card {
-            position: relative;
-            background: #fff;
-            padding: 20px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            transition: all 0.4s ease;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .card h3 {
-            font-size: 1.6em;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #777;
         }
 
         /* Scroll Triggered Animations */
@@ -176,143 +120,202 @@
             transform: translateY(0);
         }
 
-        /* Advanced Scroll Animations */
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+        /* Team Section Premium Styling */
+        .team-section {
+            background-color: #fff;
+            padding: 80px 0;
         }
 
-        .reveal-scale.visible {
-            opacity: 1;
-            transform: scale(1);
+        .team-section h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            color: #333;
+            text-transform: uppercase;
         }
 
-        .reveal-rotate {
-            opacity: 0;
-            transform: rotate(10deg);
-            transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+        .team-member-card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
         }
 
-        .reveal-rotate.visible {
-            opacity: 1;
-            transform: rotate(0);
+        .team-member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .reveal-slide-left {
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: transform 1s ease-out, opacity 1s ease-out;
+        .team-member-card img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
 
-        .reveal-slide-left.visible {
-            opacity: 1;
-            transform: translateX(0);
+        .team-member-card:hover img {
+            transform: scale(1.1);
         }
 
-        .reveal-slide-right {
-            opacity: 0;
-            transform: translateX(100px);
-            transition: transform 1s ease-out, opacity 1s ease-out;
+        .team-member-card h3 {
+            font-size: 1.6em;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
         }
 
-        .reveal-slide-right.visible {
-            opacity: 1;
-            transform: translateX(0);
+        .team-member-card p {
+            font-size: 1.2em;
+            font-weight: 400;
+            color: #777;
         }
 
-        /* Parallax Background Movement */
-        @media (min-width: 768px) {
-            .hero-background {
-                transition: transform 0.1s ease-out;
-            }
+        /* Social Media Icons */
+        .team-member-card .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
+
+        .social-icons a {
+            font-size: 1.2em;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #007bff;
+        }
+
+        /* Section Dividers */
+        .divider {
+            width: 80px;
+            height: 4px;
+            background-color: #007bff;
+            margin: 0 auto 50px;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- President Hero Section with Full-Screen Background -->
+    <!-- Hero Section -->
     <div class="hero-section">
-        <div class="hero-background"></div>
-        <div class="hero-overlay"></div>
+        <div class="overlay"></div>
         <div class="hero-content">
-            <h2>John Doe</h2>
-            <h3>President</h3>
+            <div class="president-container">
+                <div class="president">
+                    <img class="hero-image" src="../media/dummy-profile.png" alt="President Photo 1">
+                    <div class="hero-text">
+                        <h2>John Doe</h2>
+                        <h3>President</h3>
+                        <p>John has over 15 years of experience in leading teams to success. His vision and dedication have helped the company grow in unprecedented ways.</p>
+                    </div>
+                </div>
+                <div class="president">
+                    <img class="hero-image" src="../media/dummy-profile.png" alt="President Photo 2">
+                    <div class="hero-text">
+                        <h2>Jane Smith</h2>
+                        <h3>Co-President</h3>
+                        <p>Jane brings a wealth of knowledge in strategy and operations, ensuring the organization meets its goals efficiently and effectively.</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="scroll-arrow">&#x25BC;</div>
     </div>
 
-    <!-- Members Section -->
-    <div class="container designation-container member-section">
-        <h2>Our Team Members</h2>
-        
-        <div class="row text-center">
-            <!-- Member 1: Slide Left -->
-            <div class="col-sm-4 reveal-slide-left">
-                <div class="card">
-                    <img src="https://via.placeholder.com/120" alt="Member 1 Image">
-                    <h3>Jane Smith</h3>
-                    <p>Member</p>
+    <!-- Team Member Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="divider"></div>
+            <div class="row">
+                <!-- Member 1 -->
+                <div class="col-sm-4 reveal-on-scroll">
+                    <div class="team-member-card">
+                        <img src="../media/dummy-profile.png" alt="Member 1 Image">
+                        <h3>Jane Smith</h3>
+                        <p>Project Manager <br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas sit, dolor cum iste tenetur labore mollitia beatae, amet nobis optio molestias odit vel numquam dolores architecto aliquid facere, consequuntur doloremque!</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Member 2: Scale -->
-            <div class="col-sm-4 reveal-scale">
-                <div class="card">
-                    <img src="https://via.placeholder.com/120" alt="Member 2 Image">
-                    <h3>Michael Brown</h3>
-                    <p>Member</p>
+                <!-- Member 2 -->
+                <div class="col-sm-4 reveal-on-scroll">
+                    <div class="team-member-card">
+                        <img src="../media/dummy-profile.png" alt="Member 2 Image">
+                        <h3>Michael Brown</h3>
+                        <p>Lead Developer <br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum obcaecati in, quo dolorem, at nobis vero eveniet inventore minima ratione aliquid aliquam ad incidunt dolore veniam quae optio numquam officia?</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Member 3: Slide Right -->
-            <div class="col-sm-4 reveal-slide-right">
-                <div class="card">
-                    <img src="https://via.placeholder.com/120" alt="Member 3 Image">
-                    <h3>Lisa White</h3>
-                    <p>Member</p>
+                <!-- Member 3 -->
+                <div class="col-sm-4 reveal-on-scroll">
+                    <div class="team-member-card">
+                        <img src="../media/dummy-profile.png" alt="Member 3 Image">
+                        <h3>Lisa White</h3>
+                        <p>UI/UX Designer <br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, dignissimos obcaecati? Ea necessitatibus, in officia laudantium voluptate fugit, accusamus commodi quia temporibus, expedita ipsam illo nam architecto debitis? Eius, nisi!</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Bootstrap JS, jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <!-- JavaScript for Scroll Triggered Animation and Parallax -->
+    <!-- JavaScript for Scroll Animations and Parallax Effect -->
     <script>
         $(document).ready(function() {
+            // Function to reveal hero section on load
+            function revealHeroSection() {
+                $('.hero-text, .hero-image').addClass('visible');
+            }
+
             // Smooth Scroll for Arrow
             $('.scroll-arrow').on('click', function() {
                 $('html, body').animate({
-                    scrollTop: $('.member-section').offset().top
+                    scrollTop: $('.team-section').offset().top
                 }, 800);
             });
 
-            // Parallax Effect for Hero Background
+            // Smooth Parallax Effect for Hero Section
             $(window).on('scroll', function() {
-                var scrollTop = $(this).scrollTop();
-                $('.hero-background').css('transform', 'translateY(' + scrollTop * 0.5 + 'px)');
-            });
-
-            // Reveal on Scroll Effect
-            function revealOnScroll() {
                 var scrollTop = $(window).scrollTop();
-                var windowHeight = $(window).height();
-                
-                // Check for elements with each animation class
-                $('.reveal-on-scroll, .reveal-scale, .reveal-rotate, .reveal-slide-left, .reveal-slide-right').each(function() {
+                $('.hero-section').css('background-position', 'center ' + (scrollTop * 0.5) + 'px');
+
+                // Reveal on Scroll for Hero Text and Images
+                $('.hero-text, .hero-image').each(function() {
                     var elementTop = $(this).offset().top;
-                    if (scrollTop + windowHeight > elementTop + 100) {
+                    if (scrollTop + $(window).height() > elementTop + 100) {
                         $(this).addClass('visible');
                     }
                 });
-            }
 
-            // Call the function on load and scroll
-            $(window).on('scroll', revealOnScroll);
-            revealOnScroll(); // Initial call
+                // Reveal on Scroll for Team Members
+                $('.reveal-on-scroll').each(function() {
+                    var elementTop = $(this).offset().top;
+                    if (scrollTop + $(window).height() > elementTop + 100) {
+                        $(this).addClass('visible');
+                    }
+                });
+            });
+
+            // Call the function on load
+            revealHeroSection(); // Initial call for loading effect
         });
     </script>
 </body>
